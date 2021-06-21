@@ -1,5 +1,6 @@
 import json
 import logging
+from time import time
 
 
 class JsonFormatter(logging.Formatter):
@@ -16,9 +17,11 @@ class JsonFormatter(logging.Formatter):
 class Json:
     def __init__(self,
                  msg,
+                 timestamp=str(int(time())),
                  payload=None):
         self.msg = msg
         self.payload = payload
+        self.timestamp = timestamp
 
     def __str__(self):
         return json.dumps(self.__dict__)
